@@ -1,16 +1,41 @@
 ## 运行docker 容器
 ``` bash
 docker run -d -p 18081:8081 -p 13123:3000 \
-  -v /mnt/sata2-1/nas_data/暖暖相册:/app/observer/public/images \
-  -v /mnt/sata2-1/nas_data/暖暖相册:/app/server/public/images \
-  -v /mnt/sata2-1/nas_data/暖暖相册:/app/web/dist/images \
-  -v /mnt/sata2-1/nas_data/相册缩略图:/app/observer/public/thumbnails \
-  -v /mnt/sata2-1/nas_data/相册缩略图:/app/server/public/thumbnails \
-  -v /mnt/sata2-1/nas_data/相册缩略图:/app/web/dist/thumbnails \
+  -v /root/linkease/linkease-data/暖暖相册:/app/observer/public/images \
+  -v /root/linkease/linkease-data/暖暖相册:/app/server/public/images \
+  -v /root/linkease/linkease-data/暖暖相册:/app/web/dist/images \
+  -v /root/linkease/linkease-data/缩略图:/app/observer/public/thumbnails \
+  -v /root/linkease/linkease-data/缩略图:/app/server/public/thumbnails \
+  -v /root/linkease/linkease-data/缩略图:/app/web/dist/thumbnails \
   -e TZ=Asia/Shanghai \
   --name nuannuan_photo \
   --restart always \
-  nuannuan_photo:latest
+  lijiangang2017/nuannuan_photo:latest
+
+```
+
+`docker-compose up -d`
+
+``` yml
+version: '3.8'
+
+services:
+  nuannuan_photo:
+    image: lijiangang2017/nuannuan_photo:latest
+    container_name: nuannuan_photo
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "18081:8081"
+      - "13123:3000"
+    volumes:
+      - /root/linkease/linkease-data/暖暖相册:/app/observer/public/images
+      - /root/linkease/linkease-data/暖暖相册:/app/server/public/images
+      - /root/linkease/linkease-data/暖暖相册:/app/web/dist/images
+      - /root/linkease/linkease-data/缩略图:/app/observer/public/thumbnails
+      - /root/linkease/linkease-data/缩略图:/app/server/public/thumbnails
+      - /root/linkease/linkease-data/缩略图:/app/web/dist/thumbnails
 ```
 
 ## 本地环境运行
@@ -26,6 +51,7 @@ cd web && npm run build && cd .. && pm2 start ecosystem.config.js
 pm2 start ecosystem.config.js && cd web && npm run dev
 ```
 ## 更新命令
+代码更新后，运行run脚本，自动pull，并且编译容器，然后运行
 ```
 sh ./run.sh
 ```
