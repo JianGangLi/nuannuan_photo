@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+ul {
+    list-style: none;
+}
+
+/* 通用css样式 */
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+a {
+    /* 取消默认的下划线 */
+    text-decoration: none;
+    /* 继承字体颜色 */
+    color: inherit;
+}
+
+a:hover {
+    /* 鼠标悬停 */
+    color: #ff6700;
+}
+
+html {
+    color: #333;
+    min-width: 1226px;
+    font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, 'Microsoft YaHei', sans-serif;
+}
+
+body {
+    background: rgba(240, 161, 168, 0.3);
+}
+
+/* 浮动处理 */
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.container {
+    width: 1226px;
+    margin-left: auto;
+    margin-right: auto;
+}
