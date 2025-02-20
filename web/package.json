@@ -9,6 +9,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@rollup/plugin-terser": "^0.4.4",
         "@types/node": "^22.10.7",
         "@vueuse/core": "^12.5.0",
         "axios": "^1.7.9",

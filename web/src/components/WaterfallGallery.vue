@@ -3,7 +3,7 @@
 
     <div class="waterfall-container">
         <div v-for="(column, columnIndex) in columns" :key="columnIndex" class="waterfall-column">
-            <div v-for="(item, itemIndex) in column" :key="itemIndex" class="waterfall-item"
+            <div v-for="(item, itemIndex) in column" :key="item.thumbnail" class="waterfall-item"
                 @click="preview(item.original)">
                 <img v-lazy="item.thumbnail" :alt="item.thumbnail" class="waterfall-image" />
             </div>
@@ -22,6 +22,8 @@ interface ImgDataType {
     thumbnail: string;
     original: string;
 }
+
+
 
 const props = defineProps<{
     imgDataList: ImgDataType[];
@@ -61,8 +63,11 @@ const distributeImages = () => {
 
 // 处理窗口调整
 const handleResize = () => {
+    console.log("resize");
     calculateColumnCount();
 };
+
+
 
 // 监听图片数据变化
 watch(() => props.imgDataList, () => {
