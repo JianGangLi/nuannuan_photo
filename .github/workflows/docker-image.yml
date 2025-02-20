@@ -1,0 +1,30 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 登录到Docker Hub
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    # 构建Docker镜像
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag lijiangang2017/nuanuan_photo:latest
+
+    # 推送Docker镜像
+    - name: Push the Docker image
+      run: docker push lijiangang2017/nuanuan_photo:latest
