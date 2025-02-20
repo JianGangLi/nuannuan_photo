@@ -20,14 +20,14 @@ RUN rm -rf /app/server/public/images
 
 # 分别进入 observer、server 和 web 目录安装依赖
 WORKDIR /app/observer
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
 WORKDIR /app/server
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
 
 WORKDIR /app/web
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 RUN pnpm run build
 
 WORKDIR /app
