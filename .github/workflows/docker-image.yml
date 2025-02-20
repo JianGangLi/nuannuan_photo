@@ -23,8 +23,8 @@ jobs:
 
     # 构建Docker镜像
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag lijiangang2017/nuanuan_photo:latest
+      run: docker build . --file Dockerfile --tag lijiangang2017/nuannuan_photo:latest
 
     # 推送Docker镜像
     - name: Push the Docker image
-      run: docker push lijiangang2017/nuanuan_photo:latest
+      run: docker push lijiangang2017/nuannuan_photo:latest
